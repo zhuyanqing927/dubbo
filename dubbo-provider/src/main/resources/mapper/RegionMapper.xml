@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yankie.learn.provider.dao.RegionMapper" >
+  <resultMap id="BaseResultMap" type="com.yankie.learn.provider.entity.Region" >
+    <id column="region_id" property="regionId" jdbcType="INTEGER" />
+    <result column="region_name" property="regionName" jdbcType="VARCHAR" />
+    <result column="parent_region_id" property="parentRegionId" jdbcType="INTEGER" />
+    <result column="region_short_name" property="regionShortName" jdbcType="VARCHAR" />
+    <result column="region_level" property="regionLevel" jdbcType="INTEGER" />
+    <result column="region_code" property="regionCode" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="region_full_name" property="regionFullName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    region_id, region_name, parent_region_id, region_short_name, region_level, region_code,
+    post_code, region_full_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from region
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from region
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yankie.learn.provider.entity.Region" >
+    insert into region (region_id, region_name, parent_region_id,
+      region_short_name, region_level, region_code,
+      post_code, region_full_name)
+    values (#{regionId,jdbcType=INTEGER}, #{regionName,jdbcType=VARCHAR}, #{parentRegionId,jdbcType=INTEGER},
+      #{regionShortName,jdbcType=VARCHAR}, #{regionLevel,jdbcType=INTEGER}, #{regionCode,jdbcType=VARCHAR},
+      #{postCode,jdbcType=VARCHAR}, #{regionFullName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yankie.learn.provider.entity.Region" >
+    insert into region
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="regionId != null" >
+        region_id,
+      </if>
+      <if test="regionName != null" >
+        region_name,
+      </if>
+      <if test="parentRegionId != null" >
+        parent_region_id,
+      </if>
+      <if test="regionShortName != null" >
+        region_short_name,
+      </if>
+      <if test="regionLevel != null" >
+        region_level,
+      </if>
+      <if test="regionCode != null" >
+        region_code,
+      </if>
+      <if test="postCode != null" >
+        post_code,
+      </if>
+      <if test="regionFullName != null" >
+        region_full_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="regionId != null" >
+        #{regionId,jdbcType=INTEGER},
+      </if>
+      <if test="regionName != null" >
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentRegionId != null" >
+        #{parentRegionId,jdbcType=INTEGER},
+      </if>
+      <if test="regionShortName != null" >
+        #{regionShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="regionLevel != null" >
+        #{regionLevel,jdbcType=INTEGER},
+      </if>
+      <if test="regionCode != null" >
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionFullName != null" >
+        #{regionFullName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yankie.learn.provider.entity.Region" >
+    update region
+    <set >
+      <if test="regionName != null" >
+        region_name = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentRegionId != null" >
+        parent_region_id = #{parentRegionId,jdbcType=INTEGER},
+      </if>
+      <if test="regionShortName != null" >
+        region_short_name = #{regionShortName,jdbcType=VARCHAR},
+      </if>
+      <if test="regionLevel != null" >
+        region_level = #{regionLevel,jdbcType=INTEGER},
+      </if>
+      <if test="regionCode != null" >
+        region_code = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionFullName != null" >
+        region_full_name = #{regionFullName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yankie.learn.provider.entity.Region" >
+    update region
+    set region_name = #{regionName,jdbcType=VARCHAR},
+      parent_region_id = #{parentRegionId,jdbcType=INTEGER},
+      region_short_name = #{regionShortName,jdbcType=VARCHAR},
+      region_level = #{regionLevel,jdbcType=INTEGER},
+      region_code = #{regionCode,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      region_full_name = #{regionFullName,jdbcType=VARCHAR}
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </update>
+</mapper>
