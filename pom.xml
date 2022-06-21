@@ -23,7 +23,7 @@
         <zookeeper.verion>3.4.14</zookeeper.verion>
         <encoding.type>3.4.14</encoding.type>
         <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
-        <mysql-connector-java.version>5.1.44</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
         <swagger.version>2.5.0</swagger.version>
     </properties>
 
